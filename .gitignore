@@ -36,4 +36,6 @@ hs_err_pid*
 .history
 .ionide
 
+TestDriver.java
+
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,java

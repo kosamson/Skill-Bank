@@ -16,12 +16,12 @@ public class Skill implements Cloneable, Serializable, Comparable {
         this.hours = 0;
     }
 
-    public Skill(String label, int time) {
+    public Skill(String label, double time) {
         this.name = label;
         this.hours = time;
     }
 
-    public Skill(int time) {
+    public Skill(double time) {
         this.name = "Unnamed Skill";
         this.hours = time;
     }
@@ -81,6 +81,11 @@ public class Skill implements Cloneable, Serializable, Comparable {
     }
 
     @Override
+    public String toString() {
+        return "Skill Name: " + this.name + ", Hours: " + this.hours;
+    }
+
+    @Override
     public Skill clone() {
         return new Skill(this);
     }
@@ -98,6 +103,24 @@ public class Skill implements Cloneable, Serializable, Comparable {
             return 1;
         
         else if (this.hours < otherSkill.hours)
+            return -1;
+
+        return 0;
+    }
+
+    public int compareToByName(Object other) {
+        if (other == null)
+            throw new IllegalArgumentException("Illegal null argument");
+        
+        if (!(other instanceof Skill))
+            throw new IllegalArgumentException("Illegal argument type");
+
+        Skill otherSkill = (Skill) other;
+
+        if (this.name.compareTo(otherSkill.name) > 0)
+            return 1;
+        
+        else if (this.name.compareTo(otherSkill.name) < 0)
             return -1;
 
         return 0;
