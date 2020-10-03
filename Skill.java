@@ -29,6 +29,14 @@ public class Skill implements Cloneable, Serializable, Comparable {
         this.hours = otherSkill.hours;
     }
 
+    public double getHours() {
+        return this.hours;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
     public boolean setHours(double time) {
         if (time < 0)
             return false;
