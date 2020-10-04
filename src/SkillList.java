@@ -30,16 +30,16 @@ public class SkillList {
 
     private void quickSortHoursAscending(int lowIdx, int highIdx) {
         if (lowIdx < highIdx) {
-            int pivotIdx = (int) (Math.random() * (highIdx - lowIdx + 1) + lowIdx);
-
-            int part = partitionHoursAscending(lowIdx, highIdx, pivotIdx);
+            int part = partitionHoursAscending(lowIdx, highIdx);
 
             quickSortHoursAscending(lowIdx, part - 1);
             quickSortHoursAscending(part + 1, highIdx);
         }
     }
 
-    private int partitionHoursAscending(int lowIdx, int highIdx, int pivotIdx) {
+    private int partitionHoursAscending(int lowIdx, int highIdx) {
+        int pivotIdx = (int) (Math.random() * (highIdx - lowIdx + 1) + lowIdx);
+
         swap(lowIdx, pivotIdx);
 
         int lowPt = lowIdx + 1;
@@ -47,26 +47,19 @@ public class SkillList {
 
         Skill pivotSkill = skills.get(lowIdx);
 
-        while (lowPt < highPt) {
-            if (skills.get(lowPt).compareTo(pivotSkill) > 0) {
+        while (lowPt <= highPt) {
+            if (skills.get(lowPt).compareTo(pivotSkill) >= 0) {
                 swap(lowPt, highPt);
                 highPt--;
             }
 
-            else if (skills.get(highPt).compareTo(pivotSkill) < 0) {
-                swap(lowPt, highPt);
+            else 
                 lowPt++;
-            }
-
-            else {
-                lowPt++;
-                highPt--;
-            }
         }
 
-        swap(lowIdx, lowPt);
+        swap(lowIdx, highPt);
 
-        return lowPt;
+        return highPt;
     }
 
     public void sortByHoursDescending() {
@@ -75,16 +68,16 @@ public class SkillList {
 
     private void quickSortHoursDescending(int lowIdx, int highIdx) {
         if (lowIdx < highIdx) {
-            int pivotIdx = (int) (Math.random() * (highIdx - lowIdx + 1) + lowIdx);
-
-            int part = partitionHoursDescending(lowIdx, highIdx, pivotIdx);
+            int part = partitionHoursDescending(lowIdx, highIdx);
 
             quickSortHoursDescending(lowIdx, part - 1);
             quickSortHoursDescending(part + 1, highIdx);
         }
     }
 
-    private int partitionHoursDescending(int lowIdx, int highIdx, int pivotIdx) {
+    private int partitionHoursDescending(int lowIdx, int highIdx) {
+        int pivotIdx = (int) (Math.random() * (highIdx - lowIdx + 1) + lowIdx);
+
         swap(lowIdx, pivotIdx);
 
         int lowPt = lowIdx + 1;
@@ -92,26 +85,57 @@ public class SkillList {
 
         Skill pivotSkill = skills.get(lowIdx);
 
-        while (lowPt < highPt) {
-            if (skills.get(lowPt).compareTo(pivotSkill) < 0) {
+        while (lowPt <= highPt) {
+            if (skills.get(lowPt).compareTo(pivotSkill) <= 0) {
                 swap(lowPt, highPt);
                 highPt--;
             }
 
-            else if (skills.get(highPt).compareTo(pivotSkill) > 0) {
-                swap(lowPt, highPt);
+            else 
                 lowPt++;
-            }
-
-            else {
-                lowPt++;
-                highPt--;
-            }
         }
 
-        swap(lowIdx, lowPt);
+        swap(lowIdx, highPt);
 
-        return lowPt;
+        return highPt;
+    }
+
+    public void sortByNameAscending() {
+        quickSortNameAscending(0, skills.size() - 1);
+    }
+
+    private void quickSortNameAscending(int lowIdx, int highIdx) {
+        if (lowIdx < highIdx) {
+            int part = partitionNameAscending(lowIdx, highIdx);
+
+            quickSortNameAscending(lowIdx, part - 1);
+            quickSortNameAscending(part + 1, highIdx);
+        }
+    }
+
+    private int partitionNameAscending(int lowIdx, int highIdx) {
+        int pivotIdx = (int) (Math.random() * (highIdx - lowIdx + 1) + lowIdx);
+
+        swap(lowIdx, pivotIdx);
+
+        int lowPt = lowIdx + 1;
+        int highPt = highIdx;
+
+        Skill pivotSkill = skills.get(lowIdx);
+
+        while (lowPt <= highPt) {
+            if (skills.get(lowPt).compareToByName(pivotSkill) >= 0) {
+                swap(lowPt, highPt);
+                highPt--;
+            }
+
+            else 
+                lowPt++;
+        }
+
+        swap(lowIdx, highPt);
+
+        return highPt;
     }
 
     private void swap(int idx1, int idx2) {

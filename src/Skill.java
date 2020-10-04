@@ -58,7 +58,7 @@ public class Skill implements Cloneable, Serializable, Comparable {
             return true;
         }
 
-        this.hours -= time;
+        this.hours -= Math.abs(time);
         return true;
     }
 
@@ -82,7 +82,7 @@ public class Skill implements Cloneable, Serializable, Comparable {
 
     @Override
     public String toString() {
-        return "Skill Name: " + this.name + ", Hours: " + this.hours;
+        return this.name + ", " + this.hours + " hours";
     }
 
     @Override
@@ -117,10 +117,10 @@ public class Skill implements Cloneable, Serializable, Comparable {
 
         Skill otherSkill = (Skill) other;
 
-        if (this.name.compareTo(otherSkill.name) > 0)
+        if (this.name.toLowerCase().compareTo(otherSkill.name.toLowerCase()) > 0)
             return 1;
         
-        else if (this.name.compareTo(otherSkill.name) < 0)
+        else if (this.name.toLowerCase().compareTo(otherSkill.name.toLowerCase()) < 0)
             return -1;
 
         return 0;
