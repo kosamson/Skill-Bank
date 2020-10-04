@@ -82,7 +82,7 @@ public class Skill implements Cloneable, Serializable, Comparable {
 
     @Override
     public String toString() {
-        return this.name + ", " + this.hours + " hours";
+        return this.name + ": " + this.hours + " hours";
     }
 
     @Override
