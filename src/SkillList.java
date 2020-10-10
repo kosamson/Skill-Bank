@@ -24,6 +24,16 @@ public class SkillList {
         return true;
     }
 
+    public Skill getSkill(String s) {
+        for (Skill sk : skills) {
+            if (sk.getName().equals(s))
+                return sk.clone();
+        }
+
+        throw new IllegalArgumentException("No skill with label: " + s + " found.");
+    }
+
+
     public void sortByHoursAscending() {
         quickSortHoursAscending(0, skills.size() - 1);
     }
