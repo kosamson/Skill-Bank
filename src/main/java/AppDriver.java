@@ -7,6 +7,7 @@ import javax.swing.*;
 
 public class AppDriver {
     public static void main(String[] args) {
+        // a comment
         SBApp app = new SBApp();
 
         JFrame jf = new JFrame();
