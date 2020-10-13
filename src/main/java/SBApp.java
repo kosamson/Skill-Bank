@@ -1,4 +1,4 @@
-package src;
+package src.main.java;
 
 public class SBApp {
     private SkillList skills;

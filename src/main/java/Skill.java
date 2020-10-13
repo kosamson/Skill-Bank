@@ -1,4 +1,4 @@
-package src;
+package src.main.java;
 
 import java.io.Serializable;
 
@@ -17,11 +17,17 @@ public class Skill implements Cloneable, Serializable, Comparable {
     }
 
     public Skill(String label, double time) {
+        if (time < 0)
+            throw new IllegalArgumentException("Time must be greater than or equal to zero");
+
         this.name = label;
         this.hours = time;
     }
 
     public Skill(double time) {
+        if (time < 0)
+            throw new IllegalArgumentException("Time must be greater than or equal to zero");
+
         this.name = "Unnamed Skill";
         this.hours = time;
     }
