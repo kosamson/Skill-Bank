@@ -1,10 +1,10 @@
 package src.main.java;
 
 public class SBApp {
-    private SkillList skills;
+    private SkillContainer skills;
 
     public SBApp() {
-        skills = new SkillList();
+        skills = new SkillContainer();
     }
 
     public void addSkill(String s) {
@@ -12,6 +12,10 @@ public class SBApp {
     }
 
     public void incrementSkill(String s, double time) {
-        skills.getSkill(s).incrementHours(time);
+        this.skills.incrementSkillHours(s, time);
+    }
+
+    public String sbInfo() {
+        return this.skills.toString();
     }
 }
