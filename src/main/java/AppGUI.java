@@ -10,18 +10,18 @@ public class AppGUI {
         SBApp app = new SBApp();
 
         JFrame mainFrame = new JFrame();
-        mainFrame.setSize(500, 500);
+        mainFrame.setSize(500, 300);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         JLabel infoDisplay = new JLabel();
         infoDisplay.setText("Skill Bank Display");
-        infoDisplay.setBounds(50, 0, 300, 200);
+        infoDisplay.setBounds(50, 0, 200, 300);
 
         JTextArea addSkillInput = new JTextArea();
         addSkillInput.setBounds(300, 25, 150, 20);
 
         JButton addSkillButton = new JButton("Add Skill");
-        addSkillButton.setBounds(300, 50, 100, 25);
+        addSkillButton.setBounds(300, 50, 150, 25);
 
         addSkillButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -31,11 +31,30 @@ public class AppGUI {
             }
         });
 
-        // Add placeholder text to text fields
+        JTextArea incrementSkillLabelInput = new JTextArea();
+        incrementSkillLabelInput.setBounds(300, 100, 150, 20);
+
+        JTextArea incrementSkillHoursInput = new JTextArea();
+        incrementSkillHoursInput.setBounds(300, 125, 150, 20);
+
+        JButton incrementSkillButton = new JButton("Increment Skill");
+        incrementSkillButton.setBounds(300, 150, 150, 25);
+
+        incrementSkillButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String label = incrementSkillLabelInput.getText();
+                double hours = Double.parseDouble(incrementSkillHoursInput.getText());
+                app.incrementSkill(label, hours);
+                infoDisplay.setText(convertToHTML(app.sbInfo()));
+            }
+        });
 
         mainFrame.add(infoDisplay);
         mainFrame.add(addSkillButton);
         mainFrame.add(addSkillInput);
+        mainFrame.add(incrementSkillButton);
+        mainFrame.add(incrementSkillHoursInput);
+        mainFrame.add(incrementSkillLabelInput);
 
         mainFrame.setLayout(null);
         mainFrame.setVisible(true);
