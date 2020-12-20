@@ -40,12 +40,13 @@ public class SkillContainer {
         if (this.skills.isEmpty())
             return "Skill Bank is empty";
 
-        String retVal = "";
+        StringBuilder retVal = new StringBuilder();
 
         for (String label : skills.keySet()) {
-            retVal += skills.get(label) + "\n";
+            retVal.append(skills.get(label));
+            retVal.append(", ");
         }
 
-        return retVal;
+        return retVal.toString();
     }
 }

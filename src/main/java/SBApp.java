@@ -8,7 +8,11 @@ public class SBApp {
     }
 
     public void addSkill(String s) {
-        skills.addSkill(s);
+        if (s.equals(""))
+            skills.addSkill(new Skill());
+
+        else
+            skills.addSkill(s);
     }
 
     public void incrementSkill(String s, double time) {
