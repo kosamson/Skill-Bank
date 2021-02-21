@@ -28,6 +28,7 @@ public class AppGUI {
                 String label = addSkillInput.getText();
                 app.addSkill(label);
                 infoDisplay.setText(convertToHTML(app.sbInfo()));
+                addSkillInput.setText("");
             }
         });
 
@@ -46,6 +47,8 @@ public class AppGUI {
                 double hours = Double.parseDouble(incrementSkillHoursInput.getText());
                 app.incrementSkill(label, hours);
                 infoDisplay.setText(convertToHTML(app.sbInfo()));
+                incrementSkillHoursInput.setText("");
+                incrementSkillLabelInput.setText("");
             }
         });
 
@@ -62,12 +65,12 @@ public class AppGUI {
 
     private static String convertToHTML(String s) {
         StringBuilder sb = new StringBuilder();
-        sb.append("<html><p>");
+        sb.append("<html><h3>");
 
         // Add a breakline in between each skill
         sb.append(s.replace(", ", "<br>"));
 
-        sb.append("</p></html>");
+        sb.append("</h3></html>");
         return sb.toString();
     }
 }
