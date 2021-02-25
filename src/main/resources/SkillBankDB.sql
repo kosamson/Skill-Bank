@@ -1,4 +1,4 @@
-.open SkillBank.db
+.open SKILLBANK.db
 
 CREATE TABLE USER (
     user_id INT,
